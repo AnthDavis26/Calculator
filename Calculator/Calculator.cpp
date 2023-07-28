@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 
 int main()
 {
@@ -8,23 +7,23 @@ int main()
 	
 	std::cout << "Enter your first number: ";
 	std::cin >> a;
-
-	std::cout << "Enter your second number: ";
-	std::cin >> b;
-
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::cout << "Enter your operand (+, -, *, or /): ";
-	std::cin >> op;
 
 	while (op != '+' && op != '-' && op != '*' && op != '/')
 		std::cin >> op;
 
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cout << "Enter your second number: ";
+	std::cin >> b;
+
 	switch (op)
 	{
-		case('-'): result = a - b; break;
-		case('*'): result = a * b; break;
-		case('/'): result = a / b; break;
-		default: result = a + b;
+	case('-'): result = a - b; break;
+	case('*'): result = a * b; break;
+	case('/'): result = a / b; break;
+	default: result = a + b;
 	}
 
-	std::cout << "Result: " << result << std::endl;
+	std::cout << a << " " << op << " " << b << " = " << result << std::endl;
 }
